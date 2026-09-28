@@ -20,5 +20,8 @@ public class CrearRunnable {
 
             // Iniciamos el hilo
             hilo.start();
+
+            //Código para demostrar que main NO ESPERA a que s eejecute el hilo
+            System.out.println("Hola, la JVM sigue activa así que el hilo se seguirá ejecutando");
         }
 }
