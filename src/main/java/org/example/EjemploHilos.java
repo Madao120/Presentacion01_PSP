@@ -18,22 +18,23 @@ public class EjemploHilos {
 
                 System.out.println(nombre + " ha comenzado.");
 
+                /* //Uso de sleep, donde esperará 1 segundo por cada paso del bucle
                 for (int i = 1; i <= 5; i++) {
 
                     System.out.println(nombre + " -> paso " + i);
 
                     try {
-
                         // El hilo espera 1 segundo
                         Thread.sleep(1000);
 
                     } catch (InterruptedException e) {
-
                         System.out.println(nombre + " ha sido interrumpido.");
-
                         return;
                     }
+
                 }
+
+                 */
 
                 System.out.println(nombre + " ha terminado.");
             }
@@ -43,45 +44,45 @@ public class EjemploHilos {
         // MAIN
         // =============
 
+        // En main, lanza (throws) la excepción InterruptedException ya que dentro estamos usando .join
         public static void main(String[] args) throws InterruptedException {
 
             System.out.println("=== INICIO DEL PROGRAMA ===");
 
-            // 1. Creamos un Thread
+            // Creamos 2 hilos con nombre, usando el constructor alterno
             MiHilo hilo1 = new MiHilo("Hilo 1");
-
-            // 4. Creamos un segundo hilo
             MiHilo hilo2 = new MiHilo("Hilo 2");
 
-
-            // 8. Comprobamos si los hilos están vivos
+            /*
+            // Usar isAlive ANTES de ejecutarlos, por lo que dará false
             System.out.println("Antes de start():");
             System.out.println("Hilo 1 vivo: " + hilo1.isAlive());
             System.out.println("Hilo 2 vivo: " + hilo2.isAlive());
+            */
 
-
-            // 3. Iniciamos los hilos con start()
+            // inciar los hilos
             hilo1.start();
             hilo2.start();
 
-
-            // 8. Volvemos a comprobar si están vivos
+            /*
+            // isAlive
             System.out.println("\nDespués de start():");
             System.out.println("Hilo 1 vivo: " + hilo1.isAlive());
             System.out.println("Hilo 2 vivo: " + hilo2.isAlive());
 
 
-            // 7. Esperamos a que terminen los dos hilos
+            // join
             hilo1.join();
             hilo2.join();
 
 
-            // Cuando llegamos aquí, los dos hilos han terminado
+            /* // isAlive después de join
             System.out.println("\nDespués de join():");
             System.out.println("Hilo 1 vivo: " + hilo1.isAlive());
             System.out.println("Hilo 2 vivo: " + hilo2.isAlive());
 
 
             System.out.println("\n=== FIN DEL PROGRAMA ===");
+            */
         }
 }
