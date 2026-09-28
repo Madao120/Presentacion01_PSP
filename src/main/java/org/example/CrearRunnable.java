@@ -20,7 +20,5 @@ public class CrearRunnable {
 
             // Iniciamos el hilo
             hilo.start();
-
-            System.out.println("El programa principal continúa.");
         }
 }
